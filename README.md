@@ -32,7 +32,7 @@ In this project, I will continue digging into this dataset, using decision trees
 I want to focus on binary classification with decision trees and random forests for this project. But ratings in the dataset goes from 0.0 to 5.0, in steps of 0.125. So, I am going to bin the ratings into two classes. First, let's take a look at the distribution of recipe ratings.
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk/master/ratings.png", width="500">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk/master/ratings.png", width="600">
 </p>
 
 It looks like recipe ratings tend to be high, with a median of 4.375. I am going to divide the ratings into two classes around the median: "bad" = strictly less thsn 4.375. "good" = equal to or greater than 4.375. 
