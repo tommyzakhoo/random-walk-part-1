@@ -39,9 +39,11 @@ It looks like recipe ratings tend to be high, with a median of 4.375. I am going
 
 The dataset that I am going to primarily work with, and has ratings binned into two class, can be found here: [recipes_data.csv](recipes_data.csv).
 
-Note: at the time of writing, Epicurious' rating system has been changed to 0 to 4 instead. More details on the source of this dataset can be found in a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
+Note: at the time of writing, Epicurious' rating system appears to have been changed. Ratings seems to only range from 0 to 4. More details on the source of this dataset can be found in a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
 
 ## Decision Tree
+
+I could use logistic regression to build a classifier, but I am going to try a non-linear method, by building a decision tree classifier.
 
 ## Random Forest
 
