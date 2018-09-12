@@ -35,13 +35,13 @@ I want to focus on binary classification with decision trees and random forests 
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk/master/ratings.png", width="600">
 </p>
 
-It looks like recipe ratings tend to be high, with a median of 4.375. I am going to divide the ratings into two classes around the median: "bad" = strictly less thsn 4.375. "good" = equal to or greater than 4.375. I went through the ratings column and replaced all ratings that are "good" with a 1, and set the rest to 0.
+It looks like recipe ratings tend to be high, with a median of 4.375. I am going to divide the ratings into two classes around the median: "bad" = strictly less thsn 4.375. "good" = equal to or greater than 4.375. I went through the ratings column and replaced all ratings that are "good" with a 1, and set the rest to 0. Roughly 54% of the recipes has a "1", which is a nice balance.
 
 The dataset that I am going to primarily work with, and has ratings binned into two class, can be found here: [recipes_data.csv](recipes_data.csv). 
 
 Note that during the [previous project](https://github.com/tommyzakhoo/epicurious-part-1), in addition to being cleaned of possible errors, the data had columns "fat", "Portland", "non-alcoholic", "brunch" removed to avoid multicollinearity.
 
-Note: at the time of writing, Epicurious' rating system appears to have been changed. Ratings seems to only range from 0 to 4. More details on the source of this dataset can be found in a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
+Also, at the time of writing, Epicurious' rating system appears to have been changed. Ratings seems to only range from 0 to 4. More details on the source of this dataset can be found in a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
 
 ## Decision Tree
 
