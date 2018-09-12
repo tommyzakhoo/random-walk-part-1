@@ -16,7 +16,6 @@ Work in progress. Last updated: 12 September 2018.
 - [Motivation And Project Description](#motivation-and-project-description)
 - [Data Wrangling and Exploration](#data-wrangling-and-exploration)
 
-
 ## Tools, Techniques and Concepts
 
 Python, Cross Validation, Decision Tree, Gini Impurity
@@ -47,11 +46,7 @@ Also, at the time of writing, Epicurious' rating system appears to have been cha
 
 I could use logistic regression to build a classifier, but I am going to try a non-linear method, by building a decision tree classifier.
 
-## Random Forest
-
-## Confusion Matrix, ROC, AUC
-
-## Gini Coefficient
+## Gini Impurity
 
 ## Summary and Final Thoughts
 
