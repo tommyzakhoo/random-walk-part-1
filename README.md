@@ -1,5 +1,5 @@
 # A Random Walk Through The Forest
-## Predicting Online Recipe Ranking Using Decision Trees and Random Forests
+## Predicting Online Recipe Ranking Using A Decision Tree
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk/master/dail.jpg", width="500">
@@ -8,7 +8,7 @@
 </p>
 
 ## Status
-Work in progress. Last updated: 5 September 2018.
+Work in progress. Last updated: 12 September 2018.
 
 ### Table of contents
 
@@ -19,7 +19,7 @@ Work in progress. Last updated: 5 September 2018.
 
 ## Tools, Techniques and Concepts
 
-Python, Decision Tree, Random Forest, Cross Validation, Confusion Matrix
+Python, Cross Validation, Decision Tree, Gini Impurity
 
 ## Motivation And Project Description
 
