@@ -75,9 +75,14 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 ## Gini Impurity
 
 
+
+<p align="left">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png", width="600">
+</p>
+
 ## Cross Validation
 
-Cross validation of this decision tree will be done using [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to randomly select 25% of the data to be in my test set. The random selection is done in a straified manner, so that the test set has the same proportions of "1" labels as the original data.
+I am going to do a simple cross validation of this decision tree, using [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to randomly select 25% of the data to be in my test set. The random selection is done in a straified manner, so that the test set has the same proportions of "1" labels as the original data.
 
 This is a version of Monte-Carlo Cross Validation, which I have implemented from scratch and explained in a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
 
