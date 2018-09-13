@@ -77,7 +77,7 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png", width="600">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png">
 </p>
 
 ## Cross Validation
