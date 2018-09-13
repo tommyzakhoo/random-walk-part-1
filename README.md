@@ -48,15 +48,11 @@ Also, at the time of writing, Epicurious' rating system appears to have been cha
 
 I could use logistic regression to build a classifier, but I am going to try a non-linear method, by building a decision tree classifier. This will be done using sklearn, which comes with a pretty good user guide](http://scikit-learn.org/stable/modules/tree.html).
 
-Cross validation will be done using [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to randomly select 25% of the data to be in my test set, and the rest will be my training set. The random selection is done in a straified manner, so that both test and training set have the same proportions of "1" labels, as the original data.
-
-This is a version of Monte-Carlo Cross Validation, which I have implemented from scratch and explained in a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
-
 In the [tips for practical use section](http://scikit-learn.org/stable/modules/tree.html#tips-on-practical-use), the sklearn's decision tree guide says to try a depth of 3 initially, then increase the depth. This is what I will be doing.
 
 ```Python
 import pandas as pd
-import graphviz # for saving the decision tree
+import graphviz
 
 from sklearn import tree
 from sklearn.model_selection import train_test_split
@@ -67,11 +63,8 @@ X = data.drop('rating', axis=1) # drop labels
 X = X.iloc[:,1:] # drop recipe titles
 Y = data['rating']  # labels to predict
 
-# create stratified random split of data into test and training sets
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y, stratify=Y)
-
 clf = tree.DecisionTreeClassifier(max_depth=3) # starts with a depth 3 tree
-clf = clf.fit(X_train, Y_train) # fit the tree
+clf = clf.fit(X, Y) # fit the tree
 
 # save decision tree to text file
 dot_data = tree.export_graphviz(clf, class_names=['bad','good'], out_file='tree.txt')
@@ -82,6 +75,20 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 ## Gini Impurity
 
 
+## Cross Validation
+
+Cross validation of this decision tree will be done using [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to randomly select 25% of the data to be in my test set. The random selection is done in a straified manner, so that the test set has the same proportions of "1" labels as the original data.
+
+This is a version of Monte-Carlo Cross Validation, which I have implemented from scratch and explained in a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
+
+```Python
+
+from sklearn.model_selection import train_test_split
+
+# create stratified random split of data into test and training sets
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y, stratify=Y)
+
+```
 
 ## Summary and Final Thoughts
 
