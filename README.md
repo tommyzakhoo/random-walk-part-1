@@ -74,7 +74,7 @@ clf = tree.DecisionTreeClassifier(max_depth=3) # starts with a depth 3 tree
 clf = clf.fit(X_train, Y_train) # fit the tree
 
 # save decision tree to text file
-dot_data = tree.export_graphviz(clf, class_names=['good','bad'], out_file='tree.txt')
+dot_data = tree.export_graphviz(clf, class_names=['bad','good'], out_file='tree.txt')
 ```
 
 As I am using Windows 10, visualizing the decision tree with graphviz can be a little tricky. However, the "tree.txt" output can visualized with a website such as [www.webgraphviz.com](http://www.webgraphviz.com/)
