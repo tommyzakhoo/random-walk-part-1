@@ -17,6 +17,9 @@ Work in progress. Last updated: 13 September 2018.
 - [Data Wrangling and Exploration](#data-wrangling-and-exploration)
 - [Decision Tree](#decision-tree)
 - [Gini Impurity](#gini-impurity)
+- [Tree Pruning](#tree-pruning)
+- [Cross Validation](#cross-validation)
+- [Summary and Final Thoughts](#summary-and-final-thoughts)
 
 ## Tools, Techniques and Concepts
 
@@ -84,7 +87,11 @@ This process is recursively applied until final level or leaf nodes, where the d
 
 I am going to try a very rough but simple method for selecting a "decent" maximum depth for my decision tree. This is done using the Gini Impurity, which is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above.
 
-I am also going to "prune" the tree by recursive deleting leaf nodes that produces the same labels. For example, the two leaf nodes on the bottom far right of the figure above both predict the "good" label. Hence, that split does nothing, and I could have stopped at the previous node, which already predicted "good". I will also remove splits involving less than 100 data points. This threshold of 100 data points is arbitrary.
+## Tree Pruning
+
+I am also going to "prune" the tree by recursive deleting leaf nodes that produces the same labels. For example, the two leaf nodes on the bottom far right of the figure above both predict the "good" label. Hence, that split does nothing, and I could have stopped at the previous node, which already predicted "good". 
+
+Leaf nodes with 
 
 There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to choose maximum depth and prune decisions tree. I might try something better in a future project, but for now, I will be trying out this primitive method.
 
