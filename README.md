@@ -74,13 +74,19 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 
 ## Gini Impurity
 
-The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. Then, theese two smaller dataset is further divided into respective halves using the decision rule at their respective node. This process is recursively applied until
+The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. Then, theese two smaller dataset is further divided into respective halves using the decision rule at their respective node.
+
+This process is recursively applied until final level or leaf nodes, where the data points are given
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png">
 </p>
 
-I am going to try a very rough but simple method for selecting the maximum depth
+I am going to try a very rough but simple method for selecting a "decent" maximum depth for my decision tree. This is done using the Gini Impurity, which is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above.
+
+I am also going to "prune" the tree by recursive deleting leaf nodes that produces the same labels. For example, the two leaf nodes on the bottom far right of the figure above both predict the "good" label. Hence, that split does nothing, and I could have stopped at the previous node, which already predicted "good". I will also remove splits involving less than 100 data points. This threshold of 100 data points is arbitrary.
+
+There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to choose maximum depth and prune decisions tree. I might try something better in a future project, but for now, I will be trying out this primitive method.
 
 ## Cross Validation
 
@@ -99,4 +105,9 @@ X_train, X_test, Y_train, Y_test = train_test_split(X,Y, stratify=Y)
 
 ## Summary and Final Thoughts
 
+Below is a summary of what I have done in this project.
+
+- Wrangled the cleaned set of recipes data from a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
+- Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad"
+- Prune the tree
 
