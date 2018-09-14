@@ -77,23 +77,30 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 
 ## Gini Impurity
 
-The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. Then, theese two smaller dataset is further divided into respective halves using the decision rule at their respective node.
+The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. 
 
-This process is recursively applied until final level or leaf nodes, where the data points are given
+Then, these two smaller dataset is further divided into respective halves using the decision rule at their respective node. This process is recursively applied until final level or leaf nodes are reached, and a label is recommended for the data in each leaf node.
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png">
 </p>
 
-I am going to try a very rough but simple method for selecting a "decent" maximum depth for my decision tree. This is done using the Gini Impurity, which is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above.
+The Gini Impurity is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above. Gini impurity is an interesting metric for how "mixed" a set of data is, using this process:
+
+1) Pick a random data point from the set.
+2) Randomly label the data point, using probabilities from the distribution of labels in the set.
+
+In this case, I have two labels "good" and "bad" for recipe rankings. If the probability of picking a "good" recipe in a data set is p, then the Gini Impurity is simply p(1-p) + (1-p)p = 2p(1-p). This is maximized at p = 0.5, when the data is evenly splitt
+
+ 
 
 ## Tree Pruning
 
-I am also going to "prune" the tree by recursive deleting leaf nodes that produces the same labels. For example, the two leaf nodes on the bottom far right of the figure above both predict the "good" label. Hence, that split does nothing, and I could have stopped at the previous node, which already predicted "good". 
+There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to choose maximum depth and prune decisions tree. 
 
-Leaf nodes with 
+I might try something better in a future project, but for now, I will be looking at the decision tree for various depths and pruning the tree by hand. For example, I will merge two leaf nodes recommending the same label, and splits with too few samples might be ignored unless it leads to a great split further down the tree.
 
-There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to choose maximum depth and prune decisions tree. I might try something better in a future project, but for now, I will be trying out this primitive method.
+## The Decision Tree Classifier
 
 ## Cross Validation
 
