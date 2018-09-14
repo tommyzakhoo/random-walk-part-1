@@ -74,11 +74,13 @@ As I am using Windows 10, visualizing the decision tree with graphviz can be a l
 
 ## Gini Impurity
 
-
+The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. Then, theese two smaller dataset is further divided into respective halves using the decision rule at their respective node. This process is recursively applied until
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png">
 </p>
+
+I am going to try a very rough but simple method for selecting the maximum depth
 
 ## Cross Validation
 
