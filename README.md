@@ -75,8 +75,6 @@ dot_data = tree.export_graphviz(clf, class_names=['bad','good'], out_file='tree.
 
 As I am using Windows 10, visualizing the decision tree with graphviz can be a little tricky. However, the "tree.txt" output can visualized with a website such as [www.webgraphviz.com](http://www.webgraphviz.com/)
 
-## Gini Impurity
-
 The output with maximum tree depth set to 3 is shown below. X[i] refers to the i-th column of the feature dataset X in the input. What this decision tree is saying is that, starting from the top "root" node, and the data is divided into two sets based on whether X[60] <= 0.5 or X[60] > 0.5. 
 
 Then, these two smaller dataset is further divided into respective halves using the decision rule at their respective node. This process is recursively applied until final level or leaf nodes are reached, and a label is recommended for the data in each leaf node.
@@ -84,6 +82,10 @@ Then, these two smaller dataset is further divided into respective halves using 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/tree1.png">
 </p>
+
+"Samples" refer to how many data point is left at a node after the prior split. "Value" tells us the distributions of actual labels in that sample. E.g. a value of [10,20] means that 10 data points have the label "bad", while 20 data points are actually labeled "good".
+
+## Gini Impurity
 
 The Gini Impurity is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above. Gini impurity is an interesting metric for how "mixed" a set of data is, using this process:
 
