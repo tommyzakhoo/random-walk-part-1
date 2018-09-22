@@ -102,13 +102,15 @@ There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decis
 
 I might try something better in a future project, but for now, I will be looking at the decision tree for various depths and pruning the tree by hand. For example, I will merge two leaf nodes recommending the same label, and splits with too few samples might be ignored unless it leads to a great split further down the tree.
 
+<p align="left">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/depth_six_tree.png">
+</p>
+
+<p align="left">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/pruned.png">
+</p>
+
 ## The Decision Tree Classifier
-
-## Cross Validation
-
-I am going to do a simple cross validation of this decision tree, using [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to randomly select 25% of the data to be in my test set. The random selection is done in a straified manner, so that the test set has the same proportions of "1" labels as the original data.
-
-This is a version of Monte-Carlo Cross Validation, which I have implemented from scratch and explained in a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
 
 ```Python
 
