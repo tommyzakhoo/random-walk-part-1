@@ -18,7 +18,8 @@ Work in progress. Last updated: 23 September 2018.
 - [Decision Tree](#decision-tree)
 - [Gini Impurity](#gini-impurity)
 - [Tree Pruning](#tree-pruning)
-- [Cross Validation](#cross-validation)
+- [Confusion Matrix)(#confusion-matrix)
+- [Important Features](#important-features)
 - [Summary and Final Thoughts](#summary-and-final-thoughts)
 
 ## Tools, Techniques and Concepts
@@ -87,45 +88,59 @@ Then, these two smaller dataset is further divided into respective halves using 
 
 ## Gini Impurity
 
-The Gini Impurity is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above. Gini impurity is an interesting metric for how "mixed" a set of data is, using this process:
+The [gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) is reported at each node of the tree above. For example, gini = 0.496 is reported at the root node in the tree above. gini impurity is an interesting metric for how "mixed" a set of data is, using this process:
 
 1) Pick a random data point from the set.
-2) Randomly label the data point, using probabilities from the distribution of labels in the set.
+2) Randomly label the data point, using the proportions of the labels in the set as the probabilities.
 
-In this case, I have two labels "good" and "bad" for recipe rankings. If the probability of picking a "good" recipe in a data set is p, then the Gini Impurity is simply p(1-p) + (1-p)p = 2p(1-p). This is maximized at p = 0.5, when the data is evenly splitt
-
- 
+In this case, I have two labels "good" and "bad" for recipe rankings. If the probability of picking a "good" recipe in a data set is p, then the gini impurity is simply p(1-p) + (1-p)p = 2p(1-p). This is maximized at p = 0.5, when the data is evenly split. This concept can be extended to sets with multiple labels by summing up p_i (1-p_i), where p_i is the proportion of the ith label in the set.
 
 ## Tree Pruning
 
-There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to choose maximum depth and prune decisions tree. 
-
-I might try something better in a future project, but for now, I will be looking at the decision tree for various depths and pruning the tree by hand. For example, I will merge two leaf nodes recommending the same label, and splits with too few samples might be ignored unless it leads to a great split further down the tree.
+There a better methods for depth selection, but here I simply increased the depth of my decision tree until the leaves contain a low number of samples, and eventually settled at a depth of six.
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/depth_six_tree.png">
 </p>
 
+At each node, there is a split, so there are 2 nodes after the first split, 4 nodes after the second split and so on. After split k, 2 to the power of k nodes are created. As seen in the figure above, this can get out of hand really quickly. I will be reducing the complexity of this tree by deleting nodes, which is often called "pruning".
+
+There are [more sophisticated ways](https://en.wikipedia.org/wiki/Pruning_(decision_trees)) to prune decisions tree. I might try something better in a future project, but for now, I will be pruning the tree by hand. For example, I will merge two leaf nodes recommending the same label, and splits with too few samples might be ignored unless it leads to a great split further down the tree. I will also look for great splits using the gini impurity.
+
+The decision tree looks a lot more manageable after its haircut!
+
 <p align="left">
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/pruned.png">
 </p>
 
-## The Decision Tree Classifier
+## Confusion Matrix
 
-```Python
+As shown in the figure below, I evaluated my decision tree classifier using a confusion matrix.
 
-from sklearn.model_selection import train_test_split
+<p align="left">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/confusion_matrix.png">
+</p>
 
-# create stratified random split of data into test and training sets
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y, stratify=Y)
+There are [many measures](https://en.wikipedia.org/wiki/Confusion_matrix) that can be computed from a confusion matrix. I will calculate a few here.
 
-```
+The most striking thing about my classifier is that it is very good at classifying recipes with good ratings. The sensitivity or true positive rate is 7571/8566 = 88.384%. However, it is terrible at labeling recipes with bad ratings, with a specificity or true negative rate of just 22.27%!
+
+My interpretation of these results: there are specific things that will help a recipe get a high rating, but 
+
+## Important Features
+
+Despite the very low specificity of my classifier, I could still learn a lot about the features that push up recipe ratings, due to the very high sensitivity, by looking at great splits in the pruned tree.
+
+The first great split starts at the root node. Recipes with a 1 in the 60th column (X[60] > 0.5) tend to have good ratings, as shown by "value = [2930,4401]" in the node, which means 4401 recipes with good ratings are in the set, vs 2930 with bad ratings.
+
 
 ## Summary and Final Thoughts
 
 Below is a summary of what I have done in this project.
 
 - Wrangled the cleaned set of recipes data from a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
-- Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad"
-- Prune the tree
+- Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad".
+- Explained gini impurity and pruned the decision tree manually.
+- Evaluated the classifier with a confusion matrix, obtained a true positive rate of 88.384%.
+- Used the decision tree to discover which features 
 
