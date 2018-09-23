@@ -23,7 +23,7 @@ Work in progress. Last updated: 23 September 2018.
 
 ## Tools, Techniques and Concepts
 
-Python, Cross Validation, Decision Tree, Gini Impurity
+Python, Cross Validation, Decision Tree, Gini Impurity, Pruning, Confusion Matrix
 
 ## Motivation And Project Description
 
