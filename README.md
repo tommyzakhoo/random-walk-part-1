@@ -118,7 +118,7 @@ The decision tree looks a lot more manageable after its haircut!
 As shown in the figure below, I evaluated my decision tree classifier using a confusion matrix.
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/confusion_matrix.png">
+  <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/confusion%20matrix.png">
 </p>
 
 There are [many measures](https://en.wikipedia.org/wiki/Confusion_matrix) that can be computed from a confusion matrix. I will calculate a few here.
