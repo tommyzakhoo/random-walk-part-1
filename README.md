@@ -18,7 +18,7 @@ Work in progress. Last updated: 23 September 2018.
 - [Decision Tree](#decision-tree)
 - [Gini Impurity](#gini-impurity)
 - [Tree Pruning](#tree-pruning)
-- [Confusion Matrix)(#confusion-matrix)
+- [Confusion Matrix](#confusion-matrix)
 - [Important Features](#important-features)
 - [Summary and Final Thoughts](#summary-and-final-thoughts)
 
