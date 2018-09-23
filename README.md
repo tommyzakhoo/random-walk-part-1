@@ -131,8 +131,13 @@ My interpretation of these results: there are specific things that will help a r
 
 Despite the very low specificity of my classifier, I could still learn a lot about the features that push up recipe ratings, due to the very high sensitivity, by looking at great splits in the pruned tree.
 
-The first great split starts at the root node. Recipes with a 1 in the 60th column (X[60] > 0.5) tend to have good ratings, as shown by "value = [2930,4401]" in the node, which means 4401 recipes with good ratings are in the set, vs 2930 with bad ratings.
+The first great split starts at the root node. Recipes with a 1 in the 60th column (X[60] > 0.5) tend to have good ratings, as shown by "value = [2930,4401]" in the node, which means 4401 recipes with good ratings are in the set, vs 2930 with bad ratings. X[60] is the variable "bon appétit", which refers to recipes that are from the cooking magazine "bon appétit".
 
+In the next level, the set of recipes with calories X[0] > 225.5 has 3423 good ratings vs 2029 bad ratings. 
+
+Another great classification of recipes with good rating comes from picking X[616] = 0, X[447] = 0 and X[590] = 0. These three variables are respectively: thaksgiving, pasta, stir-fry. The set of recipes that are not for thanksgiving, is not stir-fried, and does not contain pasta, has 2851 good ratings vs 1687 bad ratings.
+
+X[0] <= 199.5, the variable for calories, produces a set with 1269 bad ratings and 989 good ratings. Looks like people dislike low calories recipes!
 
 ## Summary and Final Thoughts
 
