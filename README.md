@@ -133,7 +133,7 @@ Despite the very low specificity of my classifier, I could still learn a lot abo
 
 The first great split starts at the root node. Recipes with a 1 in the 60th column (X[60] > 0.5) tend to have good ratings, as shown by "value = [2930,4401]" in the node, which means 4401 recipes with good ratings are in the set, vs 2930 with bad ratings. X[60] is the variable "bon appétit", which refers to recipes that are from the cooking magazine "bon appétit".
 
-In the next level, the set of recipes with calories X[0] > 225.5 has 3423 good ratings vs 2029 bad ratings. 
+In the next level, the set of recipes with calories X[0] > 225.5 contains 3423 good ratings vs 2029 bad ratings. Looks like recipes that are low in calories are disliked! This appears in another place on the tree, where X[0] <= 199.5, produces a set with 1269 bad ratings and 989 good ratings.
 
 Another great classification of recipes with good rating comes from picking X[616] = 0, X[447] = 0 and X[590] = 0. These three variables are respectively: thaksgiving, pasta, stir-fry. The set of recipes that are not for thanksgiving, is not stir-fried, and does not contain pasta, has 2851 good ratings vs 1687 bad ratings.
 
