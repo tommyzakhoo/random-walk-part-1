@@ -135,17 +135,23 @@ The first great split starts at the root node. Recipes with a 1 in the 60th colu
 
 In the next level, the set of recipes with calories X[0] > 225.5 contains 3423 good ratings vs 2029 bad ratings. Looks like recipes that are low in calories are disliked! This appears in another place on the tree, where X[0] <= 199.5, produces a set with 1269 bad ratings and 989 good ratings.
 
-Another great classification of recipes with good rating comes from picking X[616] = 0, X[447] = 0 and X[590] = 0. These three variables are respectively: thaksgiving, pasta, stir-fry. The set of recipes that are not for thanksgiving, is not stir-fried, and does not contain pasta, has 2851 good ratings vs 1687 bad ratings.
+Another great classification of recipes with good rating comes from picking recipes with X[616] = 0, X[447] = 0 and X[590] = 0. These three variables are respectively: thanksgiving, pasta, stir-fry. The set of recipes that are not for Thanksgiving, is not stir-fried, and does not contain pasta, has 2851 good ratings vs 1687 bad ratings.
 
-X[0] <= 199.5, the variable for calories, produces a set with 1269 bad ratings and 989 good ratings. Looks like people dislike low calories recipes!
+Based on my decision tree classifier, incorporating one or more of these might help your recipe get a higher rating on Epicurious, at least according to this dataset.
+
+- Not from "bon appétit" magazine.
+- High calories (yikes!).
+- Not a Thanksgiving recipe.
+- Is not stir-fried.
+- Does not contained pasta.
 
 ## Summary and Final Thoughts
 
 Below is a summary of what I have done in this project.
 
-- Wrangled the cleaned set of recipes data from a [previous project] (https://github.com/tommyzakhoo/epicurious-part-1).
+- Wrangled the cleaned set of recipes data from a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
 - Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad".
 - Explained gini impurity and pruned the decision tree manually.
 - Evaluated the classifier with a confusion matrix, obtained a true positive rate of 88.384%.
-- Used the decision tree to discover which features 
+- Used the decision tree to discover important features.
 
