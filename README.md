@@ -121,21 +121,23 @@ As shown in the figure below, I evaluated my decision tree classifier using a co
   <img src="https://raw.githubusercontent.com/tommyzakhoo/random-walk-part-1/master/confusion_matrix.png", width=600>
 </p>
 
-There are [many measures](https://en.wikipedia.org/wiki/Confusion_matrix) that can be computed from a confusion matrix. I will just focus on two here.
+There are [many measures](https://en.wikipedia.org/wiki/Confusion_matrix) that can be computed from a confusion matrix. I will just focus on a few here.
 
 The most striking thing about my classifier is that it is very good at classifying recipes with good ratings. The sensitivity or true positive rate is 7571/8566 = 88.384%. However, it is terrible at labeling recipes with bad ratings, with a specificity or true negative rate of just 22.27%!
 
-My interpretation of these results: there might be specific factors that will help a recipe get a high rating, but it is hard to figure out what leads to bad ratings.
+The precision or positive predictive value is 7571/(5551+7571) = 57.696%. The negative predictive value is 1591/(1591+995) = 61.523%. These are a little bit better than the actual proportions of 54% good ratings and 45% bad ratings.
+
+These poor results could simply mean that it is very difficult to tell recipes with good ratings apart from bad. It will be interesting to see if I can improve my classifer in part 2 of this project.
 
 ## Feature Importance
 
-Despite the very low specificity of my classifier, I could still learn a lot about the features that push up recipe ratings, due to the very high sensitivity, by looking at great splits in the pruned tree.
+Despite how weak my classifier is, I could still try to learn about the features that affects recipe ratings, by looking at great splits in the pruned tree.
 
 The first great split starts at the root node. Recipes with a 1 in the 60th column (X[60] > 0.5) tend to have good ratings, as shown by "value = [2930,4401]" in the node, which means 4401 recipes with good ratings are in the set, vs 2930 with bad ratings. X[60] is the variable "bon appétit", which refers to recipes that are from the cooking magazine "bon appétit".
 
 In the next level, the set of recipes with calories X[0] > 225.5 contains 3423 good ratings vs 2029 bad ratings. Looks like recipes that are low in calories are disliked! This appears in another place on the tree, where X[0] <= 199.5, produces a set with 1269 bad ratings and 989 good ratings.
 
-Another great classification of recipes with good rating comes from picking recipes with X[616] = 0, X[447] = 0 and X[590] = 0. These three variables are respectively: thanksgiving, pasta, stir-fry. The set of recipes that are not for Thanksgiving, is not stir-fried, and does not contain pasta, has 2851 good ratings vs 1687 bad ratings.
+Another great classification of recipes with good rating comes from picking recipes with X[616] = 0, X[590] = 0, and X[450] = 0. These three variables are respectively: thanksgiving, stir-fry, peas. The set of recipes that are not for Thanksgiving, is not stir-fried, and does not contain peas, has 2851 good ratings vs 1687 bad ratings.
 
 Based on my decision tree classifier, incorporating one or more of these might help your recipe get a higher rating on Epicurious, at least according to this dataset.
 
@@ -143,15 +145,17 @@ Based on my decision tree classifier, incorporating one or more of these might h
 - High calories (yikes!).
 - Not a Thanksgiving recipe.
 - Is not stir-fried.
-- Does not contained pasta.
+- Does not contained peas.
 
 ## Summary and Final Thoughts
 
+Well, it turns out that I did not succeed at creating a great decision tree classifer for recipe ratings! Despite that, I am still excited by the various possibilities for improvement in part 2 of this project, and is very eager to see if they will work. 
+
 Below is a summary of what I have done in this project.
 
-- Wrangled the cleaned set of recipes data from a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
-- Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad".
+- Wrangled a set of recipes data from a [previous project](https://github.com/tommyzakhoo/epicurious-part-1).
+- Built a decision tree classifier for predicting if a recipe has a "good" >= 4.375 rating, or a "bad" < 4.375 rating.
 - Explained gini impurity and pruned the decision tree manually.
-- Evaluated the classifier with a confusion matrix, obtained a true positive rate of 88.384%.
-- Used the decision tree to discover important features.
-
+- Evaluated the classifier with a confusion matrix.
+- Calculated the sensitivity, specificity, precision, and negative predictive value.
+- Used the decision tree to evaluate feature importance.
