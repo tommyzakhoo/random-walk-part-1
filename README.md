@@ -145,7 +145,7 @@ Based on my decision tree classifier, incorporating one or more of these might h
 - High calories (yikes!).
 - Not a Thanksgiving recipe.
 - Is not stir-fried.
-- Does not contained peas.
+- Does not contain peas.
 
 ## Summary and Final Thoughts
 
